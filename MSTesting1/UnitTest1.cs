@@ -25,6 +25,28 @@ namespace MSTesting1
 
         }
 
+        [TestMethod]
+        public void getCustomNullException()
+        {
+            //Arrange
+            string expected = "Message Should Not Be Null";
+            ModeAnalyzer modeAnalyzer = new ModeAnalyzer(null);
+
+            try
+            {
+                //Act
+                string actual = modeAnalyzer.AnalyzeMood();
+
+            }
+            catch(CustomException ex)
+            {
+
+                //Assart
+                Assert.AreEqual(expected, ex.Message);
+            }
+
+        }
+
        
 
     }
