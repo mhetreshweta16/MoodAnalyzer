@@ -13,8 +13,8 @@ namespace MSTesting1
         {
             // Test Case 1
             //Arrange
-            string message = "I am in sad mood";
-            string expected = "SAD";
+            string message = null;
+            string expected = "happy";
 
             //Act
             ModeAnalyzer modeAnalyzer = new ModeAnalyzer(message);
