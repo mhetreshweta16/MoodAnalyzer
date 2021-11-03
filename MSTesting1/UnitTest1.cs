@@ -17,8 +17,8 @@ namespace MSTesting1
             string expected = "SAD";
 
             //Act
-            ModeAnalyzer modeAnalyzer = new ModeAnalyzer(message);
-            string actual = modeAnalyzer.AnalyzeMood();
+            ModeAnalyzer modeAnalyzer = new ModeAnalyzer();
+            string actual = modeAnalyzer.AnalyzeMood(message);
 
             //Assert
             Assert.AreEqual(expected, actual);
