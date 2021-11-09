@@ -1,12 +1,18 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyzarProblem;
+using System;
 
 namespace MSTesting1
 {
     [TestClass]
     public class UnitTest1
     {
-        
+        ModeAnalyserFactory factory = null;
+
+        public void SetUp()
+        {
+            factory = new ModeAnalyserFactory();
+        }
 
         [TestMethod]
         public void AnalyseHappyMood()
@@ -47,7 +53,22 @@ namespace MSTesting1
 
         }
 
-       
+        [TestMethod]
+        public void ReflectionUsingDefaultConstructor()
+        {
+            ModeAnalyzer expected = new ModeAnalyzer();
+            object obj = null;
+            try
+            {
+                obj = factory.createMoodAnalyserObject("MoodAnalyzarProblem.ModeAnalyzer", "ModeAnalyzer");
+
+            }
+            catch (CustomException ex1)
+            {
+                throw new Exception(ex1.Message);
+            }
+            obj.Equals(expected);
+        }
 
     }
 }

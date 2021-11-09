@@ -10,13 +10,18 @@ namespace MoodAnalyzarProblem
     {
         public string message;
 
+        public ModeAnalyzer()
+        {
+            Console.WriteLine("default constructor");
+        }
+
         public ModeAnalyzer(string message)
         {
             this.message = message;
         }
         public string AnalyzeMood()
         {
-            try
+            try 
             {
                 if (message.ToLower().Contains("sad"))
                 {

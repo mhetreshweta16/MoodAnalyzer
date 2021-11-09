@@ -18,8 +18,9 @@ namespace MoodAnalyzarProblem
         { 
              NUll_Type_Exception,
                 Empty_Type_Exception,
-                Class_Not_Found
-              
+                Class_Not_Found,
+            CONSTRUCTOR_NOT_FOUND
+
         }
 
         public CustomException(ExceptionType type, string message) : base(message)
