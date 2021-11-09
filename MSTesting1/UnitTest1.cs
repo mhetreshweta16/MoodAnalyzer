@@ -9,6 +9,7 @@ namespace MSTesting1
     {
         ModeAnalyserFactory factory = null;
 
+        [TestInitialize]
         public void SetUp()
         {
             factory = new ModeAnalyserFactory();
@@ -53,6 +54,11 @@ namespace MSTesting1
 
         }
 
+        /// <summary>
+        /// UC4
+        /// Reflections the using default constructor.
+        /// </summary>
+        /// <exception cref="System.Exception"></exception>
         [TestMethod]
         public void ReflectionUsingDefaultConstructor()
         {
@@ -68,6 +74,31 @@ namespace MSTesting1
                 throw new Exception(ex1.Message);
             }
             obj.Equals(expected);
+        }
+
+        /// <summary>
+        /// UC5
+        /// Gets the mood analyser using parametre constructor.
+        /// </summary>
+        /// <exception cref="System.Exception"></exception>
+        [TestMethod]
+        public void getMoodAnalyserUsingParametreConstructor()
+        {
+            string message = "I am in happy mood";
+            ModeAnalyzer expected = new ModeAnalyzer(message);
+            object actual = null;
+            try
+            {
+                ModeAnalyserFactory factory = new ModeAnalyserFactory();
+                //act
+                actual = factory.CreateMoodAnalyserParameterObject("ModeAnalyzer", "ModeAnalyzer", message);
+
+            }
+            catch (CustomException exception)
+            {
+                throw new Exception(exception.Message);
+            }
+            actual.Equals(expected);
         }
 
     }
