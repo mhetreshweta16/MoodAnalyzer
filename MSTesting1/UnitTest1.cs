@@ -175,6 +175,29 @@ namespace MSTesting1
 
         
         }
+        /// <summary>
+        /// Moods the analyser reflection using set field method.
+        /// UC7
+        /// </summary>
+        /// <exception cref="System.Exception"></exception>
+        [TestMethod]
+        public void MoodAnalyserReflectionUsingSetFieldMethod()
+        {
+            string msg = "I am in sad mood";
+            string methodName = "message";
+            string expected = "I am in sad mood";
+            string actual = " ";
+            try
+            {
+                actual = factory.SetField(msg, methodName);
+            }
+            catch (CustomException exception)
+            {
+                throw new Exception(exception.Message);
+            }
+            Assert.AreEqual(expected, actual);
+        
+        }
 
 
     }

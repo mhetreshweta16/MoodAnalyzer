@@ -20,7 +20,9 @@ namespace MoodAnalyzarProblem
                 Empty_Type_Exception,
                 Class_Not_Found,
             CONSTRUCTOR_NOT_FOUND,
-            No_Such_Method
+            No_Such_Method,
+            Field_Null,
+            Null_Message
 
         }
 
