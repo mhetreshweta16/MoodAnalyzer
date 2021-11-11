@@ -54,7 +54,7 @@ namespace MoodAnalyzarProblem
         /// <param name="className">Name of the class.</param>
         /// <param name="constructor">The constructor.</param>
         /// <param name="message">The message.</param>
-       
+
         public object CreateMoodAnalyserParameterObject(string className, string constructor, string message)
         {
             try
@@ -82,9 +82,35 @@ namespace MoodAnalyzarProblem
 
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        
+        }
+
+        /// <summary>
+        /// Invokes the analyser method.
+        /// UC6
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="methodName">Name of the method.</param>
+        /// <returns></returns>
+        /// <exception cref="MoodAnalyzarProblem.CustomException">method not found</exception>
+        public string InvokeAnalyserMethod(string message,string methodName)
+        {
+            try 
+            {
+                Type type = typeof(ModeAnalyzer);
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                ModeAnalyserFactory factory = new ModeAnalyserFactory();
+                object moodAnalyserObject = factory.CreateMoodAnalyserParameterObject("MoodAnalyzarProblem.ModeAnalyzer", "ModeAnalyzer", message);
+                object info = methodInfo.Invoke(moodAnalyserObject,null);
+                return info.ToString();
+            }
+            catch(NullReferenceException ex)
+            {
+                throw new CustomException(CustomException.ExceptionType.No_Such_Method, "method not found");
             }
         }
 
